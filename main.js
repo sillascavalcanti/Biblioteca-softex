@@ -1,5 +1,5 @@
 //Requerimento da função prompt
-const prompt = require('prompt-sync')();
+const prompt = require("prompt-sync")();
 
 //Mensagem de boas vindas
 console.log(`\n==================================================================\n`);
@@ -19,54 +19,59 @@ if (usuario === `daniel` || usuario === `matheus` || usuario === `sillas`) {
 //Menu Principal
 console.log(`\n==================================================================\n`);
 console.log(`              Selecione o serviço que você deseja:\n`);
-console.log(` 1 → Emprestimo de Livro(s)`)
+console.log(` 1 → Emprestimo de Livro(s)`);
 console.log(` 2 → Devolução de Livro(s)`);
 console.log(` 3 → Quitação de Débito(s)`);
-console.log(` 4 → Informações \n`);
+console.log(` 4 → Informações`);
+console.log(` 5 → Fechar o programa \n`);
 
 //Seleção do menu principal
 while (true) {
-  let menuPrincipal = parseInt(prompt(` → `))
-  console.log(`\n==================================================================\n`);
+  let menuPrincipal = parseInt(prompt(` → `));
+  console.log(`\n==================================================================\n`
+);
 
-  //Se a opção selecionada não for válida (digitar um número que não seja 1, 2, 3 ou 4) o programa avisará com um erro e voltará a pedir ao usuário a opção que ele deseja selecionar
-  if (!isNaN(menuPrincipal) && menuPrincipal > 0 && menuPrincipal < 5) {
+  //Se a opção selecionada não for válida (digitar um número que não seja 1, 2, 3, 4 ou 5) o programa avisará com um erro e voltará a pedir ao usuário a opção que ele deseja selecionar
+  if (!isNaN(menuPrincipal) && menuPrincipal > 0 && menuPrincipal < 6) {
     switch (menuPrincipal) {
-        case 1:
-          console.log(`                      EMPRESTIMO DE LIVRO(S)\n`)
-          //
-          //
-          // FUNCIONALIDADE DE EMPRESTIMO AQUI
-          //
-          //
-          break;
-        case 2:
-          console.log(`                      DEVOLUÇÃO DE LIVRO(S)\n`)
-          //
-          //
-          // FUNCIONALIDADE DE DEVOLUÇÃO AQUI
-          //
-          //
-          break;
-        case 3:
-          console.log(`                      QUITAÇÃO DE DÉBITOS\n`)
-          //
-          //
-          // FUNCIONALIDADE DE PAGAMENTOS AQUI
-          //
-          //
-          break;
-        case 4:
-          console.log(`                      INFORMAÇÕES\n`)
-          //
-          //
-          // FUNCIONALIDADE DE INFORMAÇÕES AQUI
-          //
-          //
-          break;
-  } break;
+      case 1:
+        console.log(`                      EMPRESTIMO DE LIVRO(S)\n`);
+        //
+        //
+        // FUNCIONALIDADE DE EMPRESTIMO AQUI
+        //
+        //
+        break;
+      case 2:
+        console.log(`                      DEVOLUÇÃO DE LIVRO(S)\n`);
+        //
+        //
+        // FUNCIONALIDADE DE DEVOLUÇÃO AQUI
+        //
+        //
+        break;
+      case 3:
+        console.log(`                      QUITAÇÃO DE DÉBITOS\n`);
+        //
+        //
+        // FUNCIONALIDADE DE PAGAMENTOS AQUI
+        //
+        //
+        break;
+      case 4:
+        console.log(`                      INFORMAÇÕES\n`);
+        //
+        //
+        // FUNCIONALIDADE DE INFORMAÇÕES AQUI
+        //
+        //
+        break;
+      default:
+        console.log(`Fechando o programa...`);
+        process.exit(1);
+    }
+    break;
   } else {
-    console.log(`ERRO: Selecione uma opção válida!\n`)
-    
+    console.log(`ERRO: Selecione uma opção válida!\n`);
   }
 }
