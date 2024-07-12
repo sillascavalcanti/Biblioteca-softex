@@ -1,3 +1,4 @@
+
 //Requerimento da função prompt
 const prompt = require('prompt-sync')();
 
