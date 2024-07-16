@@ -1,5 +1,6 @@
-//Requerimento da função prompt
+//Importações
 const prompt = require('prompt-sync')();
+const divisoria = require('./elementosGraficos/divisoria')
 
 //Mensagem de boas vindas
 console.log(`\n==================================================================\n`);
