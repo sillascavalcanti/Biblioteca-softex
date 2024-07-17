@@ -1,73 +1,51 @@
 //Importações
-const prompt = require('prompt-sync')();
-const divisoria = require('./elementosGraficos/divisoria')
+const prompt = require("prompt-sync")();
+const divisoria = require("./elementosGraficos/divisoria");
+const boasVindas = require("./telas/boasVindas");
+const login = require("./telas/login");
+const menuPrincipal = require("./telas/menuPrincipal");
 
 //Mensagem de boas vindas
-console.log(`\n==================================================================\n`);
-console.log(`                Seja bem vindo à Aquela Biblioteca`);
-console.log(`\n==================================================================\n`);
+boasVindas.mostrarTela();
 
 //Login
-let usuario = prompt(`Digite seu nome de usuário: `).toLowerCase().trim();
-let senha = prompt(`Digite sua senha: `);
+login.mostrarTela();
 
-//Se o usuário for um desses pilantras, o programa avisará que há dévitos a pagar
-if (usuario === `daniel` || usuario === `matheus` || usuario === `sillas`) {
-  console.log(`\n==================================================================\n`);
-  console.log(`              Você possui debitos com a biblioteca!`);
-}
+//Se o usuário for um pilantras, o programa avisará que há dévitos a pagar
 
 //Menu Principal
-console.log(`\n==================================================================\n`);
-console.log(`              Selecione o serviço que você deseja:\n`);
-console.log(` 1 → Emprestimo de Livro(s)`)
-console.log(` 2 → Devolução de Livro(s)`);
-console.log(` 3 → Quitação de Débito(s)`);
-console.log(` 4 → Informações \n`);
+menuPrincipal.mostrarTela();
 
-//Seleção do menu principal
+//Se a opção selecionada não for válida (digitar um número que não seja 1, 2, 3, 4 ou 5) o programa avisará com um erro e voltará a pedir ao usuário a opção que ele deseja selecionar
 while (true) {
-  let menuPrincipal = parseInt(prompt(` → `))
-  console.log(`\n==================================================================\n`);
+  let opcaoEscolhida = parseInt(prompt(" → "));
+  divisoria();
 
-  //Se a opção selecionada não for válida (digitar um número que não seja 1, 2, 3 ou 4) o programa avisará com um erro e voltará a pedir ao usuário a opção que ele deseja selecionar
-  if (!isNaN(menuPrincipal) && menuPrincipal > 0 && menuPrincipal < 5) {
-    switch (menuPrincipal) {
-        case 1:
-          console.log(`                      EMPRESTIMO DE LIVRO(S)\n`)
-          //
-          //
-          // FUNCIONALIDADE DE EMPRESTIMO AQUI
-          //
-          //
-          break;
-        case 2:
-          console.log(`                      DEVOLUÇÃO DE LIVRO(S)\n`)
-          //
-          //
-          // FUNCIONALIDADE DE DEVOLUÇÃO AQUI
-          //
-          //
-          break;
-        case 3:
-          console.log(`                      QUITAÇÃO DE DÉBITOS\n`)
-          //
-          //
-          // FUNCIONALIDADE DE PAGAMENTOS AQUI
-          //
-          //
-          break;
-        case 4:
-          console.log(`                      INFORMAÇÕES\n`)
-          //
-          //
-          // FUNCIONALIDADE DE INFORMAÇÕES AQUI
-          //
-          //
-          break;
-  } break;
+  if (!isNaN(opcaoEscolhida) && opcaoEscolhida > 0 && opcaoEscolhida < 6) {
+    switch (opcaoEscolhida) {
+      case 1:
+        console.log(`Aqui fica a função de emprestimo`);
+        break;
+
+      case 2:
+        console.log(`Aqui fica a função de devolução / renovação`);
+        break;
+
+      case 3:
+        console.log(`Aqui fica a função de quitação`);
+        break;
+
+      case 4:
+        console.log(`Aqui fica a função de informações`);
+        break;
+
+      default:
+        console.log(`Encerrando programa...`);
+        process.exit();
+        break;
+    }
+    break;
   } else {
-    console.log(`ERRO: Selecione uma opção válida!\n`)
-    
+    console.log(`ERRO: Selecione uma opção válida!`);
   }
 }
