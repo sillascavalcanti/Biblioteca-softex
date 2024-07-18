@@ -2,6 +2,7 @@
 const prompt = require("prompt-sync")();
 const divisoria = require("./elementosGraficos/divisoria");
 const boasVindas = require("./telas/boasVindas");
+const carrinho = require("./telas/carrinho");
 const login = require("./telas/login");
 const menuPrincipal = require("./telas/menuPrincipal");
 
@@ -24,7 +25,7 @@ while (true) {
   if (!isNaN(opcaoEscolhida) && opcaoEscolhida > 0 && opcaoEscolhida < 6) {
     switch (opcaoEscolhida) {
       case 1:
-        console.log(`Aqui fica a função de emprestimo`);
+        carrinho.mostrarTela()
         break;
 
       case 2:

@@ -102,4 +102,4 @@ let listaLivros =[
     }
 ]
 
-console.log(listaLivros[1]);
+module.exports = listaLivros;
