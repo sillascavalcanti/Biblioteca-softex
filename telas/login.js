@@ -14,11 +14,12 @@ const login = {
       divisoria();
 
       for (let usuario of bancoUsuarios) {
-        if (usuario.login == login && usuario.senha == senha) {
+        if (usuario.login.toLowerCase() == login.toLowerCase() && usuario.senha == senha) {
           this.contaLogada = usuario;
           this.loginBemSucedido = true;
 
           console.log(`Bem vindo, ${this.contaLogada.login}!`);
+          checandoDebito(this.contaLogada)
           divisoria();
           break;
         }
@@ -29,6 +30,14 @@ const login = {
         divisoria();
       }
     }
+    function checandoDebito(contaLogada){
+    if (contaLogada.debito > 0) {
+        console.log("")
+        return console.log(`Você tem debito de R$${contaLogada.debito}, Dirija-se ao balcão.`);
+      }
+    console.log("")
+    return console.log(`Você não tem pendencias.`);
+  }
   },
 };
 
