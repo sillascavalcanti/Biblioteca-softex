@@ -2,8 +2,7 @@ const prompt = require("prompt-sync")();
 const listaLivros = require("../bancoDados/bancoLivros");
 const divisoria = require("../elementosGraficos/divisoria");
 const livrosGeneros = require("./livrosGeneros");
-const generos = require("./livrosGeneros");
-const livros = require("./livrosListagem");
+const livrosListagem = require("./livrosListagem");
 const menuPrincipal = require("./menuPrincipal");
 
 const livrosConsulta = {
@@ -33,16 +32,16 @@ const livrosConsulta = {
 
                     divisoria();
                     console.log(`Listando todos os livros... \n`);
-                    livros.mostrarTela(livrosFiltrados);
+                    livrosListagem.mostrarTela(livrosFiltrados);
                 break;
 
                 case 2:
                     opcaoValida = true;
-                    generos.mostrarTela();
+                    livrosGeneros.mostrarTela();
 
                     divisoria();
                     console.log(`Listando todos os livros do gênero ${livrosGeneros.generoEscolhido}... \n`);
-                    livros.mostrarTela(generos.livrosFiltrados);
+                    livrosListagem.mostrarTela(livrosGeneros.livrosFiltrados);
                 break;
 
                 case 3:
