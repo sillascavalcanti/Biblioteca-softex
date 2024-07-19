@@ -28,10 +28,12 @@ const consultaLivros = {
 
             switch (menuPrincipal.opcaoEscolhida) {
                 case 1:
-                    divisoria();
-                    console.log(`Listando todos os livros... \n`);
-                    livros.mostrarTela(listaLivros);
                     opcaoValida = true;
+                    livrosFiltrados = listaLivros;
+
+                    divisoria();
+                    console.log(`              Listando todos os livros... \n`);
+                    livros.mostrarTela(livrosFiltrados);
                 break;
 
                 case 2:
@@ -50,9 +52,11 @@ const consultaLivros = {
                 break;
 
                 case 5:
-                    console.log(``);
-                    console.log(`Para receber uma sugestão de livro, por favor, consulte o bibliotecário de plantão.`);
-                    console.log(``);
+                    opcaoValida = true;
+
+                    divisoria();
+                    console.log(`              Sugestão de leitura \n`);
+                    console.log(`Para receber uma sugestão, por favor, consulte o bibliotecário de plantão. \n`);
                 break;
             
                 default:
