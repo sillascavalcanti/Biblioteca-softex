@@ -1,15 +1,15 @@
 const prompt = require("prompt-sync")();
 const listaLivros = require("../bancoDados/bancoLivros");
-const bancoUsuarios = require("../bancoDados/bancoUsuarios");
 const divisoria = require("../elementosGraficos/divisoria");
-const livros = require("./livros");
+const livrosGeneros = require("./livrosGeneros");
+const generos = require("./livrosGeneros");
+const livros = require("./livrosListagem");
 const menuPrincipal = require("./menuPrincipal");
 
-const consultaLivros = {
-    
+const livrosConsulta = {
+
     mostrarTela: function() {
 
-        var livrosFiltrados = []
         var opcaoValida = false;
 
         do {
@@ -18,7 +18,7 @@ const consultaLivros = {
             console.log(`              Consulta de livros`);
             console.log(``);
             console.log(`1 -> Listar todos os livros`);
-            console.log(`2 -> Buscar por Categoria`);
+            console.log(`2 -> Buscar por Gênero`);
             console.log(`3 -> Buscar por Autor`);
             console.log(`4 -> Buscar por Título`);
             console.log(`5 -> Pedir uma sugestão`);
@@ -32,13 +32,17 @@ const consultaLivros = {
                     livrosFiltrados = listaLivros;
 
                     divisoria();
-                    console.log(`              Listando todos os livros... \n`);
+                    console.log(`Listando todos os livros... \n`);
                     livros.mostrarTela(livrosFiltrados);
                 break;
 
                 case 2:
-                    console.log(`boo`);
                     opcaoValida = true;
+                    generos.mostrarTela();
+
+                    divisoria();
+                    console.log(`Listando todos os livros do gênero ${livrosGeneros.generoEscolhido}... \n`);
+                    livros.mostrarTela(generos.livrosFiltrados);
                 break;
 
                 case 3:
@@ -71,6 +75,6 @@ const consultaLivros = {
     }
 }
 
-consultaLivros.mostrarTela()
+livrosConsulta.mostrarTela()
 
-module.exports = consultaLivros;
+module.exports = livrosConsulta;
