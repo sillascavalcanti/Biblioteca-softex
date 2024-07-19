@@ -1,7 +1,6 @@
-const listaLivros = require("../bancoDados/bancoLivros");
 const divisoria = require("../elementosGraficos/divisoria");
 
-const livros = {
+const livrosListagem = {
 
     listaOrdemAlfabetica: [],
 
@@ -15,9 +14,8 @@ const livros = {
             console.log(`${contador} → ${livro.titulo} - ${livro.autor} - ${livro.genero}`);
             contador++;
         }
-
         console.log(``);
     }
 }
 
-module.exports = livros;
+module.exports = livrosListagem;
