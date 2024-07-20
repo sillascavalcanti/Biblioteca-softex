@@ -1,7 +1,6 @@
 const prompt = require("prompt-sync")();
 const bancoLivros = require("../bancoDados/bancoLivros");
 const divisoria = require("../elementosGraficos/divisoria");
-const livrosConsulta = require("./livrosConsulta");
 const menuPrincipal = require("./menuPrincipal");
 
 const livrosGeneros = {
@@ -48,8 +47,9 @@ const livrosGeneros = {
             if (menuPrincipal.opcaoEscolhida >= 1 && menuPrincipal.opcaoEscolhida < this.listaOrdemAlfabetica.length+1) {
 
                 opcaoValida = true;
+
                 this.generoEscolhido = this.listaOrdemAlfabetica[menuPrincipal.opcaoEscolhida-1];
-                
+
                 this.livrosFiltrados = bancoLivros.filter(livro => livro.genero === this.generoEscolhido)
 
             } else {
