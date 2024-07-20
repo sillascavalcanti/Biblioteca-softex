@@ -1,5 +1,3 @@
-const divisoria = require("../elementosGraficos/divisoria");
-
 const livrosListagem = {
 
     listaOrdemAlfabetica: [],

@@ -1,14 +1,14 @@
 const prompt = require("prompt-sync")();
-const listaLivros = require("../bancoDados/bancoLivros");
+const bancoLivros = require("../bancoDados/bancoLivros");
 const divisoria = require("../elementosGraficos/divisoria");
-const consultaLivros = require("./livrosConsulta");
+const livrosConsulta = require("./livrosConsulta");
 const menuPrincipal = require("./menuPrincipal");
 
 const livrosGeneros = {
 
     listaOrdemAlfabetica: [],
-    generoEscolhido: '',
     livrosFiltrados: [],
+    generoEscolhido: '',
 
     mostrarTela: function() {
         
@@ -18,7 +18,7 @@ const livrosGeneros = {
         var generosLista = [];
         var opcaoValida = false;
 
-        for (const livro of listaLivros) {
+        for (const livro of bancoLivros) {
                 
             generosSet.add(livro.genero)
         }
@@ -50,7 +50,7 @@ const livrosGeneros = {
                 opcaoValida = true;
                 this.generoEscolhido = this.listaOrdemAlfabetica[menuPrincipal.opcaoEscolhida-1];
                 
-                this.livrosFiltrados = listaLivros.filter(livro => livro.genero === this.generoEscolhido)
+                this.livrosFiltrados = bancoLivros.filter(livro => livro.genero === this.generoEscolhido)
 
             } else {
                 console.log(``);
@@ -60,7 +60,6 @@ const livrosGeneros = {
             }
 
         } while (!opcaoValida);
-
     }
 }
 

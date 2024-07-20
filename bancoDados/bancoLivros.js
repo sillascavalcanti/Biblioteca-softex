@@ -1,5 +1,5 @@
+let bancoLivros = [
 
-let listaLivros =[
     {
         titulo: 'It, A Coisa',
         autor: 'Stephen King',
@@ -102,4 +102,4 @@ let listaLivros =[
     }
 ]
 
-module.exports = listaLivros;
+module.exports = bancoLivros;
