@@ -1,7 +1,6 @@
 const prompt = require("prompt-sync")();
 const bancoLivros = require("../bancoDados/bancoLivros");
 const divisoria = require("../elementosGraficos/divisoria");
-const menuPrincipal = require("./menuPrincipal");
 
 const livrosGeneros = {
 
@@ -30,6 +29,7 @@ const livrosGeneros = {
         do {
 
             var contador = 1;
+            var opcaoEscolhida;
 
             divisoria();
             console.log(`              Gêneros`);
@@ -42,13 +42,13 @@ const livrosGeneros = {
             }
             console.log(``);
             
-            menuPrincipal.opcaoEscolhida = Number(prompt(`Digite o gênero desejado: `))
+            opcaoEscolhida = Number(prompt(`Digite o gênero desejado: `))
 
-            if (menuPrincipal.opcaoEscolhida >= 1 && menuPrincipal.opcaoEscolhida < this.listaOrdemAlfabetica.length+1) {
+            if (opcaoEscolhida >= 1 && opcaoEscolhida < this.listaOrdemAlfabetica.length+1) {
 
                 opcaoValida = true;
 
-                this.generoEscolhido = this.listaOrdemAlfabetica[menuPrincipal.opcaoEscolhida-1];
+                this.generoEscolhido = this.listaOrdemAlfabetica[opcaoEscolhida-1];
 
                 this.livrosFiltrados = bancoLivros.filter(livro => livro.genero === this.generoEscolhido)
 
@@ -58,7 +58,6 @@ const livrosGeneros = {
                 prompt(`Tecle ENTER para continuar...`)
                 console.log(``);
             }
-
         } while (!opcaoValida);
     }
 }

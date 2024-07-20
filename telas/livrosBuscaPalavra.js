@@ -6,6 +6,7 @@ const livrosBuscaPalavra = {
 
     livrosFiltrados: [],
     palavraChave: '',
+    buscaEncontrada: false,
 
     mostrarTela: function(atributoPesquisado) {
 
@@ -15,6 +16,13 @@ const livrosBuscaPalavra = {
         this.palavraChave = prompt(`Digite sua pesquisa: `)
 
         this.livrosFiltrados = bancoLivros.filter(livro => livro[atributoPesquisado].toLowerCase().includes(this.palavraChave.toLowerCase()));
+
+        if (this.livrosFiltrados.length == 0) {
+            console.log(`\nNão foram encontrados resultados para busca "${this.palavraChave}". Tente novamente.\n`);
+            prompt(`Tecle ENTER para voltar... `)
+        } else {
+            this.buscaEncontrada = true;
+        }
     }
 }
 

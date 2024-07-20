@@ -4,7 +4,6 @@ const divisoria = require("../elementosGraficos/divisoria");
 const livrosBuscaPalavra = require("./livrosBuscaPalavra");
 const livrosGeneros = require("./livrosGeneros");
 const livrosListagem = require("./livrosListagem");
-const menuPrincipal = require("./menuPrincipal");
 
 const livrosConsulta = {
 
@@ -13,6 +12,7 @@ const livrosConsulta = {
     mostrarTela: function() {
 
         var opcaoValida = false;
+        var opcaoEscolhida;
 
         do {
 
@@ -26,9 +26,9 @@ const livrosConsulta = {
             console.log(`5 -> Pedir uma sugestão`);
             console.log(``);
             
-            menuPrincipal.opcaoEscolhida = Number(prompt(`Digite a opção de busca desejada: `))
+            opcaoEscolhida = Number(prompt(`Digite a opção de busca desejada: `))
 
-            switch (menuPrincipal.opcaoEscolhida) {
+            switch (opcaoEscolhida) {
                 case 1:
                     opcaoValida = true;
                     this.livrosFiltrados = bancoLivros;
@@ -52,10 +52,8 @@ const livrosConsulta = {
                     livrosBuscaPalavra.mostrarTela('autor');
                     this.livrosFiltrados = livrosBuscaPalavra.livrosFiltrados;
 
-                    if (this.livrosFiltrados.length == 0) {
-                        console.log(`\nNão foram encontrados resultados para busca digitada. Tente novamente.\n`);
-                        prompt(`Tecle ENTER para voltar... `)
-                    } else{
+                    if (livrosBuscaPalavra.buscaEncontrada) {
+                        
                         divisoria();
                         console.log(`Listando todos os livros com autor: "${livrosBuscaPalavra.palavraChave}"\n`);
                         livrosListagem.mostrarTela(this.livrosFiltrados);
@@ -67,10 +65,7 @@ const livrosConsulta = {
                     livrosBuscaPalavra.mostrarTela('titulo');
                     this.livrosFiltrados = livrosBuscaPalavra.livrosFiltrados;
 
-                    if (this.livrosFiltrados.length == 0) {
-                        console.log(`\nNão foram encontrados resultados para busca digitada. Tente novamente.\n`);
-                        prompt(`Tecle ENTER para voltar... `)
-                    } else{
+                    if (livrosBuscaPalavra.buscaEncontrada) {
                         divisoria();
                         console.log(`Listando todos os livros com titulo: "${livrosBuscaPalavra.palavraChave}"\n`);
                         livrosListagem.mostrarTela(this.livrosFiltrados);
