@@ -1,11 +1,13 @@
 const prompt = require("prompt-sync")();
-const listaLivros = require("../bancoDados/bancoLivros");
+const bancoLivros = require("../bancoDados/bancoLivros");
 const divisoria = require("../elementosGraficos/divisoria");
 const livrosGeneros = require("./livrosGeneros");
 const livrosListagem = require("./livrosListagem");
 const menuPrincipal = require("./menuPrincipal");
 
 const livrosConsulta = {
+
+    livrosFiltrados: [],
 
     mostrarTela: function() {
 
@@ -28,20 +30,21 @@ const livrosConsulta = {
             switch (menuPrincipal.opcaoEscolhida) {
                 case 1:
                     opcaoValida = true;
-                    livrosFiltrados = listaLivros;
+                    this.livrosFiltrados = bancoLivros;
 
                     divisoria();
                     console.log(`Listando todos os livros... \n`);
-                    livrosListagem.mostrarTela(livrosFiltrados);
+                    livrosListagem.mostrarTela(this.livrosFiltrados);
                 break;
 
                 case 2:
                     opcaoValida = true;
                     livrosGeneros.mostrarTela();
+                    this.livrosFiltrados = livrosGeneros.livrosFiltrados;
 
                     divisoria();
                     console.log(`Listando todos os livros do gênero ${livrosGeneros.generoEscolhido}... \n`);
-                    livrosListagem.mostrarTela(livrosGeneros.livrosFiltrados);
+                    livrosListagem.mostrarTela(this.livrosFiltrados);
                 break;
 
                 case 3:
