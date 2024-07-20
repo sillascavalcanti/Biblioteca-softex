@@ -84,7 +84,7 @@ const livrosConsulta = {
                 default:
                     console.log(``);
                     console.log(`Opção inválida. Por favor, tente novamente.`);
-                    prompt(`Tecle ENTER para continuar...`)
+                    prompt(`Tecle ENTER para voltar... `)
                     console.log(``);
 
                 break;
