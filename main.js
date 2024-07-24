@@ -2,30 +2,29 @@
 const prompt = require("prompt-sync")();
 const divisoria = require("./elementosGraficos/divisoria");
 const boasVindas = require("./telas/boasVindas");
-const carrinho = require("./telas/carrinho");
+const carrinhoObj = require("./telas/carrinho");  // Importando apenas o carrinhoObj
 const login = require("./telas/login");
 const menuPrincipal = require("./telas/menuPrincipal");
 
-//Mensagem de boas vindas
+// Mensagem de boas vindas
 boasVindas.mostrarTela();
 
-//Login
+// Login
 login.mostrarTela();
 
-//Se o usuário for um pilantras, o programa avisará que há dévitos a pagar
+// Se o usuário for um pilantras, o programa avisará que há débitos a pagar
 
-//Menu Principal
+// Menu Principal
 menuPrincipal.mostrarTela();
 
-//Se a opção selecionada não for válida (digitar um número que não seja 1, 2, 3, 4 ou 5) o programa avisará com um erro e voltará a pedir ao usuário a opção que ele deseja selecionar
+// Se a opção selecionada não for válida (digitar um número que não seja 1, 2, 3, 4 ou 5) o programa avisará com um erro e voltará a pedir ao usuário a opção que ele deseja selecionar
 while (true) {
   let opcaoEscolhida = parseInt(prompt(" → "));
-  divisoria();
 
   if (!isNaN(opcaoEscolhida) && opcaoEscolhida > 0 && opcaoEscolhida < 6) {
     switch (opcaoEscolhida) {
       case 1:
-        carrinho.mostrarTela()
+        carrinhoObj.mostrarTela();
         break;
 
       case 2:
