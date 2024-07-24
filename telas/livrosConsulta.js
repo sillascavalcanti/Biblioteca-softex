@@ -4,6 +4,7 @@ const divisoria = require("../elementosGraficos/divisoria");
 const livrosBuscaPalavra = require("./livrosBuscaPalavra");
 const livrosGeneros = require("./livrosGeneros");
 const livrosListagem = require("./livrosListagem");
+const livrosOpcoes = require("./livrosOpcoes");
 
 const livrosConsulta = {
 
@@ -14,7 +15,7 @@ const livrosConsulta = {
         var opcaoValida = false;
         var opcaoEscolhida;
 
-        do {
+        while (!opcaoValida) {
 
             divisoria();
             console.log(`              Consulta de livros`);
@@ -35,7 +36,7 @@ const livrosConsulta = {
 
                     divisoria();
                     console.log(`Listando todos os livros do acervo: \n`);
-                    livrosListagem.mostrarTela(this.livrosFiltrados);
+
                 break;
 
                 case 2:
@@ -45,7 +46,7 @@ const livrosConsulta = {
 
                     divisoria();
                     console.log(`Listando todos os livros do gênero: ${livrosGeneros.generoEscolhido}\n`);
-                    livrosListagem.mostrarTela(this.livrosFiltrados);
+
                 break;
 
                 case 3:
@@ -56,8 +57,7 @@ const livrosConsulta = {
                         
                         divisoria();
                         console.log(`Listando todos os livros com autor: "${livrosBuscaPalavra.palavraChave}"\n`);
-                        livrosListagem.mostrarTela(this.livrosFiltrados);
-                        opcaoValida = true;
+
                     }
                 break;
 
@@ -68,8 +68,7 @@ const livrosConsulta = {
                     if (livrosBuscaPalavra.buscaEncontrada) {
                         divisoria();
                         console.log(`Listando todos os livros com titulo: "${livrosBuscaPalavra.palavraChave}"\n`);
-                        livrosListagem.mostrarTela(this.livrosFiltrados);
-                        opcaoValida = true;
+
                     }
                 break;
 
@@ -89,10 +88,23 @@ const livrosConsulta = {
 
                 break;
             }   
-        } while (!opcaoValida);
+        };
+
+        if (
+            opcaoEscolhida == 1 ||
+            opcaoEscolhida == 2 ||
+            opcaoEscolhida == 3 ||
+            opcaoEscolhida == 4
+        ) {
+            livrosListagem.mostrarTela(this.livrosFiltrados);
+            this.opcaoValida = livrosListagem.opcaoValida;
+            livrosOpcoes.mostrarTela(this.livrosFiltrados);
+
+            if (livrosOpcoes.voltarMenuPrincipal) {
+                this.opcaoValida = true;
+            }
+        }
     }
 }
-
-livrosConsulta.mostrarTela()
 
 module.exports = livrosConsulta;
