@@ -1,6 +1,7 @@
 const prompt = require("prompt-sync")({ sigint: true });
 const divisoria = require("../elementosGraficos/divisoria");
 const menuPrincipal = require("../telas/menuPrincipal");
+const carrinhoObj = require("../telas/carrinho");
 
 const limparCarrinho = {
   mostrarTela: function () {
@@ -13,20 +14,21 @@ const limparCarrinho = {
     if (!isNaN(escolha) && escolha > 0 && escolha < 4) {
       switch (escolha) {
         case 1:
-          //voltar para consulta de livros
+          // Voltar para consulta de livros
           break;
         case 2:
-          divisoria();
-          menuPrincipal.mostrarTela();
+          // Voltar para o menu principal
+          break;
         case 3:
           console.log(`Saindo do sistema...`);
           divisoria();
           process.exit();
+          break;
         default:
           console.log("Ação inválida. Por favor, tente novamente!");
           divisoria();
           break;
-      }
+      } 
     } else {
       console.log(`ERRO: Selecione uma opção válida!`);
     }
