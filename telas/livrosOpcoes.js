@@ -1,5 +1,5 @@
 const divisoria = require('../elementosGraficos/divisoria');
-const carrinho = require('./carrinho');
+const carrinhoObj = require('./carrinho');
 
 const prompt = require('prompt-sync')();
 
@@ -38,8 +38,8 @@ const livroOpcoes = {
                         this.opcaoValida = true;
                         this.livroEscolhido = livros[opcaoEscolhida-1]
 
-                        carrinho.adicionarLivro(this.livroEscolhido);
-                        carrinho.mostrarTela();
+                        carrinhoObj.adicionarLivro(this.livroEscolhido);
+                        carrinhoObj.mostrarTela();
                     }
                 break;
                 
@@ -51,7 +51,11 @@ const livroOpcoes = {
                     this.opcaoValida = true;
                     this.voltarMenuPrincipal = true;
                 break;
-            
+
+                case 0:
+                    console.log('Encerrando programa... ');
+                    process.exit();
+                    break;
                 default:
                     console.log(`Opção inválida. Por favor, tente novamente.`);
                     console.log('');

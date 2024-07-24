@@ -1,52 +1,52 @@
-const prompt = require("prompt-sync")();
-const bancoLivros = require("../bancoDados/bancoLivros");
-const divisoria = require("../elementosGraficos/divisoria");
-const livrosBuscaPalavra = require("./livrosBuscaPalavra");
-const livrosGeneros = require("./livrosGeneros");
-const livrosListagem = require("./livrosListagem");
-const livrosOpcoes = require("./livrosOpcoes");
+const prompt = require('prompt-sync')();
+const bancoLivros = require('../bancoDados/bancoLivros');
+const divisoria = require('../elementosGraficos/divisoria');
+const espacamento = require('../elementosGraficos/espacamento');
+const limparCarrinho = require('./limparCarrinho');
+const livrosBuscaPalavra = require('./livrosBuscaPalavra');
+const livrosGeneros = require('./livrosGeneros');
+const livrosListagem = require('./livrosListagem');
+const livrosOpcoes = require('./livrosOpcoes');
 
 const livrosConsulta = {
 
     livrosFiltrados: [],
+    opcaoValida: null,
 
-    mostrarTela: function() {
+    mostrarTela: function() {;
 
-        var opcaoValida = false;
         var opcaoEscolhida;
+        this.opcaoValida = false;
 
-        while (!opcaoValida) {
-
+        while(!this.opcaoValida) {
             divisoria();
-            console.log(`              Consulta de livros`);
-            console.log(``);
-            console.log(`1 -> Listar todos os livros`);
-            console.log(`2 -> Buscar por Gênero`);
-            console.log(`3 -> Buscar por Autor`);
-            console.log(`4 -> Buscar por Título`);
-            console.log(`5 -> Pedir uma sugestão`);
-            console.log(``);
+            console.log('Consulta de livros');
+            espacamento();
+            console.log('Selecione uma das opções de busca: ');
+            espacamento();
             
-            opcaoEscolhida = Number(prompt(`Digite a opção de busca desejada: `))
+            console.log('1 -> Listar todos os livros');
+            console.log('2 -> Buscar por Gênero');
+            console.log('3 -> Buscar por Autor');
+            console.log('4 -> Buscar por Título');
+            console.log('5 -> Pedir uma sugestão');
+            espacamento();
 
+            opcaoEscolhida = Number(prompt('Digite a opção desejada: '))
+            espacamento();
+         
             switch (opcaoEscolhida) {
                 case 1:
-                    opcaoValida = true;
                     this.livrosFiltrados = bancoLivros;
 
-                    divisoria();
-                    console.log(`Listando todos os livros do acervo: \n`);
-
+                    console.log(`Listando todos os livros do acervo: `);
                 break;
 
                 case 2:
-                    opcaoValida = true;
                     livrosGeneros.mostrarTela();
                     this.livrosFiltrados = livrosGeneros.livrosFiltrados;
 
-                    divisoria();
-                    console.log(`Listando todos os livros do gênero: ${livrosGeneros.generoEscolhido}\n`);
-
+                    console.log(`Listando todos os livros do gênero: ${livrosGeneros.generoEscolhido}`);
                 break;
 
                 case 3:
@@ -54,10 +54,10 @@ const livrosConsulta = {
                     this.livrosFiltrados = livrosBuscaPalavra.livrosFiltrados;
 
                     if (livrosBuscaPalavra.buscaEncontrada) {
-                        
-                        divisoria();
-                        console.log(`Listando todos os livros com autor: "${livrosBuscaPalavra.palavraChave}"\n`);
+                        this.opcaoValida = true;
 
+                        divisoria();
+                        console.log(`Listando todos os livros com autor: "${livrosBuscaPalavra.palavraChave}"`);
                     }
                 break;
 
@@ -67,41 +67,39 @@ const livrosConsulta = {
 
                     if (livrosBuscaPalavra.buscaEncontrada) {
                         divisoria();
-                        console.log(`Listando todos os livros com titulo: "${livrosBuscaPalavra.palavraChave}"\n`);
-
+                        console.log(`Listando todos os livros com titulo: "${livrosBuscaPalavra.palavraChave}"`);
                     }
                 break;
 
                 case 5:
-                    opcaoValida = true;
+                    this.opcaoValida = true;
 
                     divisoria();
-                    console.log(`              Sugestão de leitura \n`);
-                    console.log(`Para receber uma sugestão, por favor, consulte o bibliotecário de plantão. \n`);
+                    console.log(`Sugestão de leitura`);
+
+                    console.log(`Para receber uma sugestão, por favor, consulte o bibliotecário de plantão.`);
+                    espacamento();
                 break;
             
                 default:
-                    console.log(``);
                     console.log(`Opção inválida. Por favor, tente novamente.`);
-                    prompt(`Tecle ENTER para voltar... `)
-                    console.log(``);
-
+                    espacamento();
                 break;
-            }   
-        };
+            }
+            
+            if (
+                opcaoEscolhida == 1 ||
+                opcaoEscolhida == 2 ||
+                opcaoEscolhida == 3 ||
+                opcaoEscolhida == 4
+            ) {
+                livrosListagem.mostrarTela(this.livrosFiltrados);
+                this.opcaoValida = livrosListagem.opcaoValida
+                livrosOpcoes.mostrarTela(this.livrosFiltrados);
 
-        if (
-            opcaoEscolhida == 1 ||
-            opcaoEscolhida == 2 ||
-            opcaoEscolhida == 3 ||
-            opcaoEscolhida == 4
-        ) {
-            livrosListagem.mostrarTela(this.livrosFiltrados);
-            this.opcaoValida = livrosListagem.opcaoValida;
-            livrosOpcoes.mostrarTela(this.livrosFiltrados);
-
-            if (livrosOpcoes.voltarMenuPrincipal) {
-                this.opcaoValida = true;
+                if (livrosOpcoes.voltarMenuPrincipal || limparCarrinho.voltarMenuPrincipal) {
+                    this.opcaoValida = true;
+                }
             }
         }
     }
