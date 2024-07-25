@@ -2,8 +2,8 @@
 const prompt = require('prompt-sync')();
 console.log('Devolução / Renovação de empréstimos');
         console.log('');
-        console.log('1 -> Devolver livros');
-        console.log('2 -> Renovar empréstimos');
+        console.log('1 → Devolver livros');
+        console.log('2 → Renovar empréstimos');
       var opcaoEscolhida = Number(prompt('Digite a opção desejada: '));
 
         switch (opcaoEscolhida) {

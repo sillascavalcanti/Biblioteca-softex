@@ -1,8 +1,10 @@
 //Importações
 const prompt = require("prompt-sync")();
 const divisoria = require("./elementosGraficos/divisoria");
+const espacamento = require("./elementosGraficos/espacamento");
 const boasVindas = require("./telas/boasVindas");
-const carrinhoObj = require("./telas/carrinho");  // Importando apenas o carrinhoObj
+const devolucao = require("./telas/devolucao");
+const informacoes = require("./telas/informacoes");
 const livrosConsulta = require("./telas/livrosConsulta");
 const login = require("./telas/login");
 const menuPrincipal = require("./telas/menuPrincipal");
@@ -19,7 +21,9 @@ login.mostrarTela();
 while (true) {
   // Menu Principal
   menuPrincipal.mostrarTela();
-  let opcaoEscolhida = parseInt(prompt(" → "));
+
+  espacamento();
+  let opcaoEscolhida = parseInt(prompt("Digite a opção desejada → "));
 
   switch (opcaoEscolhida) {
     case 1:
@@ -34,25 +38,26 @@ while (true) {
       }
       break;
     case 2:
-      console.log(`Aqui fica a função de devolução / renovação`);
+        devolucao.mostrarTela();
       break;
 
     case 3:
-      console.log(`Aqui fica a função de quitação`);
+      login.checandoDebito();
       break;
 
     case 4:
-      console.log(`Aqui fica a função de informações`);
+      informacoes.mostrarTela();
       break;
 
     case 5:
+      espacamento();
       console.log(`Encerrando programa...`);
       process.exit();
       break;
 
     default:
+      espacamento();
       console.log(`ERRO: Selecione uma opção válida!`);
       break;
   }
 }
-

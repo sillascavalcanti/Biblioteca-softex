@@ -10,10 +10,9 @@ const livrosBuscaPalavra = {
 
     mostrarTela: function(atributoPesquisado) {
 
-        divisoria();
         console.log(`              Busca por ${atributoPesquisado}`);
         console.log(``);
-        this.palavraChave = prompt(`Digite sua pesquisa: `)
+        this.palavraChave = prompt(`Escreva sua pesquisa: `)
 
         this.livrosFiltrados = bancoLivros.filter(livro => livro[atributoPesquisado].toLowerCase().includes(this.palavraChave.toLowerCase()));
 

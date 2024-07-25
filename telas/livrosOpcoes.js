@@ -17,21 +17,20 @@ const livroOpcoes = {
 
         while(!this.opcaoValida) {
 
-            divisoria();
             console.log("Opções: ");
 
-            console.log('1 -> Adicionar um livro da lista ao carrinho');
-            console.log('2 -> Fazer uma nova busca');
-            console.log('3 -> Voltar ao menu principal');
-            console.log('0 -> Sair do sistema');
+            console.log('1 → Adicionar um livro da lista ao carrinho');
+            console.log('2 → Fazer uma nova busca');
+            console.log('3 → Voltar ao menu principal');
+            console.log('0 → Sair do sistema');
             console.log('');
 
-            opcaoEscolhida = Number(prompt('Digite a opção desejada: '))
+            opcaoEscolhida = Number(prompt('Digite a opção desejada → '))
             console.log('');
 
             switch (opcaoEscolhida) {
                 case 1:
-                    opcaoEscolhida = Number(prompt('Digite o número do livro para adicioná-lo ao carrinho: '))
+                    opcaoEscolhida = Number(prompt('Digite o número do livro para adicioná-lo ao carrinho → '))
                     console.log('');
 
                     if (opcaoEscolhida >= 1 && opcaoEscolhida <= livros.length) {
