@@ -21,7 +21,6 @@ login.mostrarTela();
 while (true) {
   // Menu Principal
   menuPrincipal.mostrarTela();
-
   espacamento();
   let opcaoEscolhida = parseInt(prompt("Digite a opção desejada → "));
 
@@ -38,7 +37,7 @@ while (true) {
       }
       break;
     case 2:
-        devolucao.mostrarTela();
+      devolucao.mostrarTela();
       break;
 
     case 3:

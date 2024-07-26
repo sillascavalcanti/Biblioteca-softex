@@ -1,5 +1,4 @@
 const espacamento = require("../elementosGraficos/espacamento");
-
 const livrosListagem = {
 
     listaOrdemAlfabetica: [],

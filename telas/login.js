@@ -31,6 +31,14 @@ const login = {
         espacamento();
       }
     }
+    function checandoDebito(contaLogada){
+    if (contaLogada.debito > 0) {
+        console.log("")
+        return console.log(`Você tem debito de R$${contaLogada.debito}, Dirija-se ao balcão.`);
+      }
+    console.log("")
+    return console.log(`Você não tem pendencias.`);
+  }
   },
 
   checandoDebito: function() {
