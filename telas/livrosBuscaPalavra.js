@@ -1,6 +1,7 @@
 const prompt = require("prompt-sync")();
+const chalk = require("chalk");
 const bancoLivros = require("../bancoDados/bancoLivros");
-const divisoria = require("../elementosGraficos/divisoria");
+const espacamento = require("../elementosGraficos/espacamento");
 
 const livrosBuscaPalavra = {
 
@@ -11,13 +12,13 @@ const livrosBuscaPalavra = {
     mostrarTela: function(atributoPesquisado) {
 
         console.log(`              Busca por ${atributoPesquisado}`);
-        console.log(``);
-        this.palavraChave = prompt(`Escreva sua pesquisa: `)
+        espacamento();
+        this.palavraChave = prompt(chalk.rgb(255,0,255)`Escreva sua pesquisa: `)
 
         this.livrosFiltrados = bancoLivros.filter(livro => livro[atributoPesquisado].toLowerCase().includes(this.palavraChave.toLowerCase()));
 
         if (this.livrosFiltrados.length == 0) {
-            console.log(`\nNão foram encontrados resultados para a busca "${this.palavraChave}". Tente novamente.\n`);
+            console.log(chalk.rgb(255,0,0)(`\nNão foram encontrados resultados para a busca "${this.palavraChave}". Tente novamente.\n`));
             prompt(`Tecle ENTER para voltar... `)
         } else {
             this.buscaEncontrada = true;

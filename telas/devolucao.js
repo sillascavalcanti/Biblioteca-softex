@@ -1,4 +1,5 @@
 const prompt = require("prompt-sync")();
+const chalk = require("chalk");
 const divisoria = require("../elementosGraficos/divisoria");
 const espacamento = require("../elementosGraficos/espacamento");
 
@@ -6,14 +7,14 @@ const devolucao = {
   mostrarTela: function () {
     
     divisoria()
-    console.log("Devolução / Renovação de empréstimos");
+    console.log("               Devolução / Renovação de empréstimos");
     espacamento()
     console.log("1 → Devolver livros");
     console.log("2 → Renovar empréstimos");
 
     while (true) {
             espacamento()
-            var opcaoEscolhida = parseInt(prompt("Digite a opção desejada → "));
+            var opcaoEscolhida = parseInt(prompt(chalk.rgb(255,0,255)`Digite a opção desejada → `));
             divisoria()
         switch (opcaoEscolhida) {
             case 1:
@@ -29,7 +30,7 @@ const devolucao = {
               break;
       
             default:
-              console.log("Opção inválida! Tente novamente.");
+              console.log(chalk.rgb(255,255,0)`Opção inválida! Tente novamente.`);
               espacamento()
               break
           }

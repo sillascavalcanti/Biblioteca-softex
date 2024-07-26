@@ -1,11 +1,8 @@
 const prompt = require("prompt-sync")({ sigint: true });
-const listaLivros = require("../bancoDados/bancoLivros");
+const chalk = require("chalk");
 const divisoria = require("../elementosGraficos/divisoria");
 const espacamento = require("../elementosGraficos/espacamento");
 const limparCarrinho = require("./limparCarrinho");
-
-// const listaDeLivros = listaLivros;
-// let carrinho = [];
 
 const carrinhoObj = {
 
@@ -18,7 +15,7 @@ const carrinhoObj = {
 
         while (!this.opcaoValida) {
             divisoria();
-            console.log(`              Meu Carrinho`);
+            console.log(`                    Meu Carrinho`);
             espacamento();
             this.visualizarCarrinho();
 
@@ -30,43 +27,41 @@ const carrinhoObj = {
             console.log(` 9 → Finalizar Carrinho`);
             console.log(` 0 → Limpar Carrinho`);
             divisoria();
-            let acao = prompt("Selecione a opção que você deseja → ");
+            let acao = parseInt(prompt(chalk.rgb(255,0,255)`Selecione a opção que você deseja → `));
             espacamento();
 
             switch (acao) {
-                case "1":
-                case "2":
-                case "3":
+                case 1:
+                case 2:
+                case 3:
                     var remover = parseInt(acao);
                     if (this.conteudo[remover - 1]) {
                         var indice = this.conteudo[remover - 1].titulo;
                         this.conteudo.splice(remover - 1, 1);
-                        console.log(`Livro "${indice}" removido do carrinho.`);
+                        console.log(chalk.rgb(255,255,0)(`Livro "${indice}" removido do carrinho.`));
                     } else {
-                        console.log("Erro: Não há livro neste espaço do carrinho para remover.");
+                        console.log(chalk.rgb(255,0,0)`Erro: Não há livro neste espaço do carrinho para remover.`);
                     }
                     break;
-                case "8":
+                case 8:
                     if (this.conteudo.length < 3) {
                         this.opcaoValida = true;
                     } else {
-                        divisoria();
-                        console.log("Seu carrinho está cheio!");
-                        divisoria();
+                        console.log(chalk.rgb(255,255,0)`Seu carrinho está cheio!`);
                     }
                     break;
-                case "9":
+                case 9:
                     if (this.conteudo.length === 0) {
-                        console.log(`ERRO: Seu carrinho está vazio!`);
+                        console.log(chalk.rgb(255,0,0)`ERRO: Seu carrinho está vazio!`);
                     } else {
                         this.finalizarCarrinho();
                     }
                     break;
-                case "0":
+                case 0:
                     if (this.conteudo.length === 0) {
-                        console.log(`ERRO: Seu carrinho está vazio!`);
+                        console.log(chalk.rgb(255,0,0)`ERRO: Seu carrinho está vazio!`);
                     } else {
-                        console.log(`Limpando carrinho...`);
+                        console.log(chalk.rgb(255,255,0)`Limpando carrinho...`);
                         this.conteudo = [];
                         limparCarrinho.mostrarTela();
                         if(limparCarrinho.voltarParaConsulta) {
@@ -75,7 +70,7 @@ const carrinhoObj = {
                     }
                     break;
                 default:
-                    console.log("Ação inválida. Por favor, tente novamente!");
+                    console.log(chalk.rgb(255,0,0)`Ação inválida. Por favor, tente novamente!`);
                     break;
             }
         }
@@ -84,7 +79,7 @@ const carrinhoObj = {
 
         this.conteudo.push(livro);
         espacamento();
-        console.log(`Livro "${livro.titulo}" adicionado ao carrinho.`);
+        console.log(chalk.rgb(0,255,0)(`Livro "${livro.titulo}" adicionado ao carrinho.`));
 
     },
     visualizarCarrinho: function () {
@@ -95,9 +90,9 @@ const carrinhoObj = {
         });
     },
     finalizarCarrinho: function () {
-        console.log("Finalizando o carrinho...");
+        console.log(chalk.rgb(0,255,0)`Finalizando o carrinho...`);
         divisoria();
-        console.log(`              Recibo`);
+        console.log(`                            Recibo`);
         espacamento();
         this.visualizarCarrinho();
         espacamento();

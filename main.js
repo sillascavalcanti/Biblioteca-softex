@@ -1,5 +1,6 @@
 //Importações
 const prompt = require("prompt-sync")();
+const chalk = require("chalk");
 const divisoria = require("./elementosGraficos/divisoria");
 const espacamento = require("./elementosGraficos/espacamento");
 const boasVindas = require("./telas/boasVindas");
@@ -22,16 +23,15 @@ while (true) {
   // Menu Principal
   menuPrincipal.mostrarTela();
   espacamento();
-  let opcaoEscolhida = parseInt(prompt("Digite a opção desejada → "));
+  let opcaoEscolhida = parseInt(prompt(chalk.rgb(255,0,255)`Digite a opção desejada → `));
 
   switch (opcaoEscolhida) {
     case 1:
 
       if (login.contaLogada.debito > 0){
         divisoria();
-        console.log('Atenção: você possui débitos em aberto em nosso sistema!');
-        console.log('Regularize sua situação assim que possível para poder voltar a usar o serviço de empréstimo de livros.');
-        divisoria();
+        console.log(chalk.rgb(255,255,0)`Atenção: você possui débitos em aberto em nosso sistema!`);
+        console.log(chalk.rgb(255,255,0)`Regularize sua situação assim que possível para poder voltar a usar o serviço de empréstimo de livros.`);
       } else {
         livrosConsulta.mostrarTela();
       }
@@ -50,13 +50,14 @@ while (true) {
 
     case 5:
       espacamento();
-      console.log(`Encerrando programa...`);
+      console.log(chalk.rgb(255,255,0)`Encerrando programa...`);
+      divisoria()
       process.exit();
       break;
 
     default:
       espacamento();
-      console.log(`ERRO: Selecione uma opção válida!`);
+      console.log(chalk.rgb(255,0,0)`ERRO: Selecione uma opção válida!`);
       break;
   }
 }

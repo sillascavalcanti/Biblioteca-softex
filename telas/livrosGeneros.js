@@ -1,4 +1,5 @@
 const prompt = require("prompt-sync")();
+const chalk = require("chalk");
 const bancoGeneros = require("../bancoDados/bancoGeneros");
 const bancoLivros = require("../bancoDados/bancoLivros");
 const divisoria = require("../elementosGraficos/divisoria");
@@ -19,6 +20,7 @@ const livrosGeneros = {
             var contador = 1;
             var opcaoEscolhida;
 
+            divisoria();
             console.log(`              Gêneros`);
             espacamento();
             
@@ -29,7 +31,7 @@ const livrosGeneros = {
             }
             espacamento();
             
-            opcaoEscolhida = Number(prompt(`Digite o gênero desejado → `))
+            opcaoEscolhida = Number(prompt(chalk.rgb(255,0,255)`Digite o gênero desejado → `))
             espacamento();
 
             if (opcaoEscolhida >= 1 && opcaoEscolhida < this.listaOrdemAlfabetica.length+1) {
@@ -42,7 +44,7 @@ const livrosGeneros = {
 
             } else {
                 espacamento();
-                console.log(`Opção inválida. Por favor, tente novamente.`);
+                console.log(chalk.rgb(255,0,0)`Opção inválida. Por favor, tente novamente.`);
                 prompt(`Tecle ENTER para continuar...`)
                 espacamento();
             }

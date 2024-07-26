@@ -1,5 +1,6 @@
 //Importações
 const prompt = require("prompt-sync")();
+const chalk = require("chalk");
 const bancoUsuarios = require("../bancoDados/bancoUsuarios");
 const divisoria = require("../elementosGraficos/divisoria");
 const espacamento = require("../elementosGraficos/espacamento");
@@ -20,31 +21,23 @@ const login = {
           this.contaLogada = usuario;
           this.loginBemSucedido = true;
 
-          console.log(`Bem vindo, ${this.contaLogada.login}!`);
+          console.log(chalk.rgb(0,255,0)(`Bem vindo, ${this.contaLogada.login}!`));
           this.checandoDebito(this.contaLogada)
           break;
         }
       }
 
       if (this.loginBemSucedido == false) {
-        console.log(`Login ou senha incorretos. Tente novamente.`);
+        console.log(chalk.rgb(255,0,0)`Login ou senha incorretos. Tente novamente.`);
         espacamento();
       }
     }
-    function checandoDebito(contaLogada){
-    if (contaLogada.debito > 0) {
-        console.log("")
-        return console.log(`Você tem debito de R$${contaLogada.debito}, Dirija-se ao balcão.`);
-      }
-    console.log("")
-    return console.log(`Você não tem pendencias.`);
-  }
   },
 
   checandoDebito: function() {
     if (this.contaLogada.debito > 0) {
         espacamento();
-        return console.log(`Você tem debito de R$ ${this.contaLogada.debito}, dirija-se ao balcão.`);
+        return console.log(chalk.rgb(255,255,0)(`Você tem debito de R$ ${this.contaLogada.debito.toFixed(2)}, dirija-se ao balcão.`));
       }
     espacamento();
     return console.log(`Você não tem pendencias.`);
