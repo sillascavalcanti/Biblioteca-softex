@@ -1,4 +1,5 @@
 const prompt = require('prompt-sync')();
+const chalk = require('chalk');
 const bancoLivros = require('../bancoDados/bancoLivros');
 const divisoria = require('../elementosGraficos/divisoria');
 const espacamento = require('../elementosGraficos/espacamento');
@@ -20,7 +21,7 @@ const livrosConsulta = {
 
         while(!this.opcaoValida) {
             divisoria();
-            console.log('Consulta de livros');
+            console.log('              Consulta de livros');
             espacamento();
             console.log('Selecione uma das opções de busca: ');
             espacamento();
@@ -32,20 +33,19 @@ const livrosConsulta = {
             console.log('5 → Pedir uma sugestão');
             espacamento();
 
-            opcaoEscolhida = Number(prompt('Digite a opção desejada → '))
-            espacamento();
+            opcaoEscolhida = Number(prompt(chalk.rgb(255,0,255)`Digite a opção desejada → `))
          
             switch (opcaoEscolhida) {
                 case 1:
                     this.livrosFiltrados = bancoLivros;
-
+                    divisoria()
                     console.log(`Listando todos os livros do acervo: `);
                 break;
 
                 case 2:
                     livrosGeneros.mostrarTela();
                     this.livrosFiltrados = livrosGeneros.livrosFiltrados;
-
+                    divisoria()
                     console.log(`Listando todos os livros do gênero: ${livrosGeneros.generoEscolhido}`);
                 break;
 
@@ -75,15 +75,16 @@ const livrosConsulta = {
                     this.opcaoValida = true;
 
                     divisoria();
-                    console.log(`Sugestão de leitura`);
-
+                    console.log(`              Sugestão de leitura`);
+                    espacamento();
                     console.log(`Para receber uma sugestão, por favor, consulte o bibliotecário de plantão.`);
                     espacamento();
+                    prompt()
                 break;
             
                 default:
-                    console.log(`Opção inválida. Por favor, tente novamente.`);
                     espacamento();
+                    console.log(chalk.rgb(255,0,0)`Opção inválida. Por favor, tente novamente.`);
                 break;
             }
             
