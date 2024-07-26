@@ -5,8 +5,6 @@ const espacamento = require("../elementosGraficos/espacamento");
 
 //Menu Principal
 const menuPrincipal = {
-  sairSistema: false,
-  opcaoEscolhida: 0,
 
   mostrarTela: function () {
     divisoria();
