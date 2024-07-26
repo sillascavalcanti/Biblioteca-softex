@@ -25,14 +25,14 @@ const livrosConsulta = {
             console.log('Selecione uma das opções de busca: ');
             espacamento();
             
-            console.log('1 -> Listar todos os livros');
-            console.log('2 -> Buscar por Gênero');
-            console.log('3 -> Buscar por Autor');
-            console.log('4 -> Buscar por Título');
-            console.log('5 -> Pedir uma sugestão');
+            console.log('1 → Listar todos os livros');
+            console.log('2 → Buscar por Gênero');
+            console.log('3 → Buscar por Autor');
+            console.log('4 → Buscar por Título');
+            console.log('5 → Pedir uma sugestão');
             espacamento();
 
-            opcaoEscolhida = Number(prompt('Digite a opção desejada: '))
+            opcaoEscolhida = Number(prompt('Digite a opção desejada → '))
             espacamento();
          
             switch (opcaoEscolhida) {
